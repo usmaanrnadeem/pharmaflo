@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharma Flo - Find Pharmacies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Pharma Flo</h1>
+  <p>Enter your postcode to find nearby pharmacies:</p>
+  <input type="text" id="postcode" placeholder="Enter postcode">
+  <button onclick="searchPharmacies()">Search</button>
+
+  <script>
+    function searchPharmacies() {
+      const postcode = document.getElementById('postcode').value;
+      if (postcode) {
+        // Redirect to the next page with the entered postcode
+        window.location.href = `page2.html?postcode=${postcode}`;
+      } else {
+        alert("Please enter a valid postcode.");
+      }
+    }
+  </script>
+</body>
+</html>

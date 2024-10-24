@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nearby Pharmacies</title>
+  <style>
+    #map {
+      height: 500px;
+      width: 70%;
+      margin: 20px auto;
+    }
+    .pharmacy-list {
+      margin: 20px;
+      text-align: left;
+    }
+    .pharmacy-item {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    a {
+      color: blue;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Pharmacies near your location</h2>
+  <div id="map"></div>
+  <div class="pharmacy-list">
+    <h3>Pharmacies List</h3>
+    <div id="pharmacy-list"></div>
+  </div>
+
+  <script>
+    // Sample data to simulate pharmacies for now
+    const pharmacies = [
+      { name: "Pharmacy 1", lat: 51.5, lng: -0.1, address: "123 Main St" },
+      { name: "Pharmacy 2", lat: 51.51, lng: -0.09, address: "456 Elm St" },
+      { name: "Pharmacy 3", lat: 51.49, lng: -0.11, address: "789 Oak St" }
+    ];
+
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 51.5, lng: -0.1 }, // Default location
+        zoom: 13
+      });
+
+      const listContainer = document.getElementById("pharmacy-list");
+
+      pharmacies.forEach(pharmacy => {
+        const marker = new google.maps.Marker({
+          position: { lat: pharmacy.lat, lng: pharmacy.lng },
+          map: map,
+          title: pharmacy.name
+        });
+
+        const listItem = document.createElement("div");
+        listItem.className = "pharmacy-item";
+        listItem.innerHTML = `<a href="page3.html">${pharmacy.name}</a> - ${pharmacy.address}`;
+        listContainer.appendChild(listItem);
+      });
+    }
+  </script>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
+  </script>
+</body>
+</html>
